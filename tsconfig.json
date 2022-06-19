@@ -1,11 +1,20 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": "src",
+    "paths": {
+        "app/*": ["app/*"],
+        "config/*": ["app/_config/*"],
+        "environment/*": ["environments/*"],
+        "shared/*": ["app/_shared/*"],
+        "helpers/*": ["helpers/*"],
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -14,13 +23,15 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  ]
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "./src/index.tsx"
+  ],
 }
