@@ -1,25 +1,27 @@
+import { memo } from 'react';
+
+import { Card } from 'antd';
+
 import { PokemonResults } from '../../models/pokemon';
+import { StyledCard } from './styled';
+
+const { Meta } = Card;
 
 interface IPokemonItemProps {
-  item: PokemonResults;
+  name: PokemonResults['name'];
+  url?: PokemonResults['url'];
+  handleCardClick: (pokemonId: string | null) => void;
 }
 
-const PokemonItem = ({ item }: IPokemonItemProps) => {
-  return (
-    <div>
-      <h3>PokemonItem</h3>
-      <div>
-        name -
-        {' '}
-        {item.name}
-      </div>
-      <div>
-        url -
-        {' '}
-        {item.url}
-      </div>
-    </div>
-  );
-};
+const PokemonItem = ({ name, url, handleCardClick }: IPokemonItemProps) => (
+  <StyledCard
+    onClick={() => {
+      const id = url ? url?.split('/').reverse()[1] : null;
+      handleCardClick(id);
+    }}
+  >
+    <Meta title={name} />
+  </StyledCard>
+);
 
-export default PokemonItem;
+export default memo(PokemonItem);

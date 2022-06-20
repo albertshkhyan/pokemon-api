@@ -1,6 +1,6 @@
 export interface PokemonResults {
   name: string;
-  url: string;
+  url?: string;
 }
 
 export interface PokemonResponse {
